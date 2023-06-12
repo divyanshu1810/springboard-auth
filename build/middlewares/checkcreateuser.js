@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.checkcreateuser = void 0;
-const user_1 = require("../models/user");
+const signupschema_1 = require("../models/signupschema");
 const checkcreateuser = async (req, res, next) => {
     try {
-        await user_1.userschema.validate(req.body);
+        await signupschema_1.signupschema.validate(req.body);
         next();
     }
     catch (error) {
