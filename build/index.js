@@ -7,8 +7,6 @@ const express_1 = __importDefault(require("express"));
 const config_1 = __importDefault(require("./config"));
 const loaders_1 = __importDefault(require("./loaders"));
 const logger_1 = __importDefault(require("./loaders/logger"));
-const checkcreateuser_1 = require("./middlewares/checkcreateuser");
-const handlecreateuser_1 = require("./controllers/handlecreateuser");
 async function startServer() {
     const app = (0, express_1.default)();
     await (0, loaders_1.default)({ expressApp: app });
@@ -24,10 +22,6 @@ async function startServer() {
         logger_1.default.error(err);
         process.exit(1);
     });
-    app.get('/', (req, res) => {
-        res.send('Hello World!');
-    });
-    app.post('/signup', checkcreateuser_1.checkcreateuser, handlecreateuser_1.handleCreateUser);
 }
 startServer();
 //# sourceMappingURL=index.js.map
