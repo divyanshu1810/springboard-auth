@@ -1,8 +1,9 @@
 import express from 'express';
-
 import config from './config';
 import Loaders from './loaders';
 import Logger from './loaders/logger';
+import { checkcreateuser } from './middlewares/checkcreateuser';
+import { handleCreateUser } from './controllers/handlecreateuser';
 
 async function startServer() {
   const app = express();
@@ -21,6 +22,10 @@ async function startServer() {
       Logger.error(err);
       process.exit(1);
     });
-}
 
+  app.get('/', (req, res) => {
+    res.send('Hello World!');
+  });
+  app.post('/signup', checkcreateuser, handleCreateUser);
+}
 startServer();

@@ -31,4 +31,9 @@ export default {
   api: {
     prefix: '/api',
   },
+
+  /**
+   *
+   */
+  saltRounds: parseInt(process.env.SALT_ROUNDS) || 10,
 };
